@@ -6,7 +6,7 @@
   
   <title>Everyday Animations in Android</title>
   
-  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="description" content="A talk about using animations to improve the UX in Android">
   <meta name="author" content="David Truxall">
   
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -86,23 +86,31 @@
     <section>
       <h2>Agenda</h2>
       <ul>
-        <li>Understand Different Types of Animations</li>
+        <li>Animation Basics in Android</li>
         <li>Specific Use Cases</li>
       </ul>
     </section>
     
     <section>
       <section>
-        <h2>Animation Types</h2>
-      </section>
-      <section>
-        <h3>Property</h3>
+        <h2>Animation Basics</h2>
       </section>
       <section>
         <h3>View Animations</h3>
       </section>
       <section>
+        <h3>Property Animations</h3>
+      </section>
+      <section>
+        <h3>Layout Animations</h3>
+      </section>
+      <section>
         <h3>MotionLayout</h3>
+        <aside class="notes">
+          API 18+
+          ConstraintLayout
+          Editor
+        </aside>
       </section>
     </section>
   
@@ -186,13 +194,6 @@
     </section>
     
     <section>
-      <h2>Slides</h2>
-      <p>
-        Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="https://slides.com" target="_blank">https://slides.com</a>.
-      </p>
-    </section>
-    
-    <section>
       <h2>Point of View</h2>
       <p>
         Press <strong>ESC</strong> to enter the slide overview.
@@ -202,30 +203,6 @@
       </p>
     </section>
     
-    <section>
-      <h2>Touch Optimized</h2>
-      <p>
-        Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-      </p>
-    </section>
-    
-    <section data-markdown>
-      <script type="text/template">
-        ## Markdown support
-        
-        Write content using inline or external Markdown.
-        Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-        
-        ```
-        <section data-markdown>
-          ## Markdown support
-          
-          Write content using inline or external Markdown.
-          Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-        </section>
-        ```
-      </script>
-    </section>
     
     <section>
       <section id="fragments">
@@ -254,38 +231,6 @@
         <p class="fragment fade-in-then-semi-out">fade-in-then-semi-out</p>
         <p>Highlight <span class="fragment highlight-red">red</span> <span class="fragment highlight-blue">blue</span> <span class="fragment highlight-green">green</span></p>
       </section>
-    </section>
-    
-    <section id="transitions">
-      <h2>Transition Styles</h2>
-      <p>
-        You can select from different transitions, like: <br>
-        <a href="?transition=none#/transitions">None</a> -
-        <a href="?transition=fade#/transitions">Fade</a> -
-        <a href="?transition=slide#/transitions">Slide</a> -
-        <a href="?transition=convex#/transitions">Convex</a> -
-        <a href="?transition=concave#/transitions">Concave</a> -
-        <a href="?transition=zoom#/transitions">Zoom</a>
-      </p>
-    </section>
-    
-    <section id="themes">
-      <h2>Themes</h2>
-      <p>
-        reveal.js comes with a few themes built in: <br>
-        <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-        <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-      </p>
     </section>
     
     <section>
@@ -354,54 +299,6 @@ function linkify( selector ) {
       <p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
     </section>
     
-    <section>
-      <h2>Marvelous List</h2>
-      <ul>
-        <li>No order here</li>
-        <li>Or here</li>
-        <li>Or here</li>
-        <li>Or here</li>
-      </ul>
-    </section>
-    
-    <section>
-      <h2>Fantastic Ordered List</h2>
-      <ol>
-        <li>One is smaller than...</li>
-        <li>Two is smaller than...</li>
-        <li>Three!</li>
-      </ol>
-    </section>
-    
-    <section>
-      <h2>Tabular Tables</h2>
-      <table>
-        <thead>
-        <tr>
-          <th>Item</th>
-          <th>Value</th>
-          <th>Quantity</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Apples</td>
-          <td>$1</td>
-          <td>7</td>
-        </tr>
-        <tr>
-          <td>Lemonade</td>
-          <td>$2</td>
-          <td>18</td>
-        </tr>
-        <tr>
-          <td>Bread</td>
-          <td>$3</td>
-          <td>2</td>
-        </tr>
-        </tbody>
-      </table>
-    </section>
     
     <section>
       <h2>Clever Quotes</h2>
@@ -420,16 +317,6 @@ function linkify( selector ) {
         You can link between slides internally,
         <a href="#/2/3">like this</a>.
       </p>
-    </section>
-    
-    <section>
-      <h2>Speaker View</h2>
-      <p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-      <p>Press the <em>S</em> key to try it out.</p>
-      
-      <aside class="notes">
-        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-      </aside>
     </section>
     
     <section>
@@ -476,14 +363,7 @@ function linkify( selector ) {
         <li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
       </ul>
     </section>
-    
-    <section style="text-align: left;">
-      <h1>THE END</h1>
-      <p>
-        - <a href="https://slides.com">Try the online editor</a> <br>
-        - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-      </p>
-    </section>
+
   
   </div>
 
