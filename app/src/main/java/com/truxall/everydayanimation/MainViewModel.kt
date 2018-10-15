@@ -5,4 +5,5 @@ import android.arch.lifecycle.AndroidViewModel
 
 public class MainViewModel(application: Application) : AndroidViewModel(application) {
 
+
 }

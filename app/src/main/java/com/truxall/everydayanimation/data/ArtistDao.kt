@@ -8,7 +8,10 @@ import android.arch.persistence.room.Query
 interface ArtistDao {
 
     @Query("SELECT * FROM artist")
-    fun getArtists(): List<Artist>
+    fun getArtists(): LiveData<List<Artist>>
+
+    @Query("SELECT * FROM artist WHERE id = :artistId")
+    fun getArtistById(artistId: Int): Artist
 
     @Query("SELECT * FROM album WHERE artistId = :artistId ORDER BY year DESC")
     fun getAlbuns(artistId: Int): List<Album>
