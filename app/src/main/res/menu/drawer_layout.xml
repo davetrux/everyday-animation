@@ -6,6 +6,10 @@
         android:title="@string/home" />
     <item
         android:id="@+id/list_fragment"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@android:drawable/ic_menu_agenda"
         android:title="@string/list" />
+    <item
+        android:id="@+id/connected_fragment"
+        android:icon="@android:drawable/ic_menu_directions"
+        android:title="@string/connected" />
 </menu>

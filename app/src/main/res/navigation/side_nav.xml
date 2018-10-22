@@ -15,4 +15,10 @@
         android:name="com.truxall.everydayanimation.ui.ListFragment"
         android:label="@string/list"
         tools:layout="@layout/list_fragment" />
+
+    <fragment
+        android:id="@+id/connected_fragment"
+        android:name="com.truxall.everydayanimation.ui.ConnectSharedFragment"
+        android:label="@string/list"
+        tools:layout="@layout/fragment_connect_shared" />
 </navigation>
