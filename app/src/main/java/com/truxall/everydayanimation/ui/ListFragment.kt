@@ -13,11 +13,6 @@ import android.view.animation.AnimationUtils
 
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Album
-import com.truxall.everydayanimation.R.id.album_view
-import android.view.animation.LayoutAnimationController
-
-
-
 
 
 class ListFragment : Fragment() {
