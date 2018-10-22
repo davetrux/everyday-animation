@@ -14,5 +14,5 @@ interface ArtistDao {
     fun getArtistById(artistId: Int): Artist
 
     @Query("SELECT * FROM album WHERE artistId = :artistId ORDER BY year DESC")
-    fun getAlbuns(artistId: Int): List<Album>
+    fun getAlbums(artistId: Int): LiveData<List<Album>>
 }

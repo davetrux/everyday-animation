@@ -1,7 +1,18 @@
 package com.truxall.everydayanimation.ui
 
-import android.arch.lifecycle.ViewModel;
+import android.app.Application
+import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.LiveData
+import com.truxall.everydayanimation.data.Album
+import com.truxall.everydayanimation.data.ArtistRepository
 
-class ListViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class ListViewModel(application: Application) : AndroidViewModel(application) {
+    private val mRepository: ArtistRepository
+
+    internal val artistAlbums: LiveData<List<Album>>
+
+    init {
+        mRepository = ArtistRepository(application)
+        artistAlbums = mRepository.albumsById(111247)
+    }
 }
