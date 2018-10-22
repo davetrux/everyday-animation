@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorGray"
+    android:layout_marginTop="?attr/actionBarSize"
     tools:context=".ui.ListFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/album_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
         tools:listitem="@layout/album_list"
-        android:paddingTop="?attr/actionBarSize"
         />
 
 </android.support.constraint.ConstraintLayout>

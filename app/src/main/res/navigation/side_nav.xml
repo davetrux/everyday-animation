@@ -13,6 +13,6 @@
     <fragment
         android:id="@+id/list_fragment"
         android:name="com.truxall.everydayanimation.ui.ListFragment"
-        android:label="@string/home"
+        android:label="@string/list"
         tools:layout="@layout/list_fragment" />
 </navigation>
