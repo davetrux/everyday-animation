@@ -22,19 +22,17 @@ class ListFragment : Fragment() {
     }
 
     private lateinit var viewModel: ListViewModel
-    private var containingView: View? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        this.containingView = inflater.inflate(R.layout.list_fragment, container, false)
-        return this.containingView
+        return inflater.inflate(R.layout.list_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
 
-        val recyclerView =  this.containingView!!.findViewById<RecyclerView>(R.id.album_view)
+        val recyclerView =  view.findViewById<RecyclerView>(R.id.album_view)
         val adapter = AlbumListAdapter(this.requireContext())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
@@ -49,7 +47,7 @@ class ListFragment : Fragment() {
             // Run the animation on update
             // this.runLayoutAnimation(recyclerView)
         }
-        viewModel!!.artistAlbums.observe(this, albumObserver)
+        viewModel.artistAlbums.observe(this, albumObserver)
     }
 
     private fun runLayoutAnimation(recyclerView: RecyclerView) {
