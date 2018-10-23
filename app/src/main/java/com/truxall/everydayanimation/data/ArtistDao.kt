@@ -13,6 +13,6 @@ interface ArtistDao {
     @Query("SELECT * FROM artist WHERE id = :artistId")
     fun getArtistById(artistId: Int): Artist
 
-    @Query("SELECT * FROM album WHERE artistId = :artistId ORDER BY year DESC")
+    @Query("SELECT * FROM album WHERE artistId = :artistId ORDER BY year ASC")
     fun getAlbums(artistId: Int): LiveData<List<Album>>
 }
