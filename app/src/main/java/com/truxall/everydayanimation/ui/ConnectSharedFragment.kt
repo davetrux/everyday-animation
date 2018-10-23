@@ -9,12 +9,6 @@ import android.view.ViewGroup
 
 import com.truxall.everydayanimation.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ConnectSharedFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class ConnectSharedFragment : Fragment() {
 
     private lateinit var viewModel: ConnectSharedViewModel

@@ -43,9 +43,9 @@ class ListFragment : Fragment() {
         recyclerView.layoutAnimation = animation
 
         val albumObserver = Observer<List<Album>?> { newList ->
-            adapter.setWords(newList)
+            adapter.setAlbums(newList)
             // Run the animation on update
-            // this.runLayoutAnimation(recyclerView)
+            this.runLayoutAnimation(recyclerView)
         }
         viewModel.artistAlbums.observe(this, albumObserver)
     }
