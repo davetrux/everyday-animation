@@ -1,10 +1,12 @@
 package com.truxall.everydayanimation.ui
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Artist
@@ -19,17 +21,19 @@ internal class ArtistListAdapter internal constructor(context: Context) : Recycl
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
-        val itemView = mInflater.inflate(R.layout.album_list, parent, false)
+        val itemView = mInflater.inflate(R.layout.connected_artist_list, parent, false)
         return ArtistViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
         if (mArtists != null) {
             val current = mArtists!![position]
-            holder.wordItemView.text = current.name
+            holder.artistNameView.text = current.name
+            val bitmap =  BitmapFactory.decodeByteArray(current.thumbNail, 0, current.thumbNail.size)
+            holder.arrtistThumbnail.setImageBitmap(bitmap)
         } else {
             // Covers the case of data not being ready yet.
-            holder.wordItemView.text = "No Artist"
+            holder.artistNameView.text = "No Artists"
         }
     }
 
@@ -38,8 +42,6 @@ internal class ArtistListAdapter internal constructor(context: Context) : Recycl
         notifyDataSetChanged()
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
     override fun getItemCount(): Int {
         return if (mArtists != null)
             mArtists!!.size
@@ -48,10 +50,12 @@ internal class ArtistListAdapter internal constructor(context: Context) : Recycl
     }
 
     internal inner class ArtistViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val wordItemView: TextView
+        val artistNameView: TextView
+        val arrtistThumbnail: ImageView
 
         init {
-            wordItemView = itemView.findViewById(R.id.textView)
+            artistNameView = itemView.findViewById(R.id.artist_name)
+            arrtistThumbnail = itemView.findViewById(R.id.artist_image)
         }
     }
 }
