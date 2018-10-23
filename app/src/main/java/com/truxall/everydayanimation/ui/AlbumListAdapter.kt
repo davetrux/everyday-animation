@@ -15,37 +15,35 @@ import android.R.attr.maxWidth
 
 
 
-internal class AlbumListAdapter internal constructor(context: Context) : RecyclerView.Adapter<AlbumListAdapter.WordViewHolder>() {
+internal class AlbumListAdapter internal constructor(context: Context) : RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>() {
 
     private val mInflater: LayoutInflater
-    private var mAlbums: List<Album>? = null // Cached copy of words
+    private var mAlbums: List<Album>? = null
 
     init {
         mInflater = LayoutInflater.from(context)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val itemView = mInflater.inflate(R.layout.album_list, parent, false)
-        return WordViewHolder(itemView)
+        return AlbumViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         if (mAlbums != null) {
             val current = mAlbums!![position]
-            holder.wordItemView.text = current.name
+            holder.albumItemView.text = current.name
         } else {
             // Covers the case of data not being ready yet.
-            holder.wordItemView.text = "No Album"
+            holder.albumItemView.text = "No Album"
         }
     }
 
-    internal fun setWords(words: List<Album>?) {
-        mAlbums = words
+    internal fun setAlbums(albums: List<Album>?) {
+        mAlbums = albums
         notifyDataSetChanged()
     }
 
-    // getItemCount() is called many times, and when it is first called,
-    // mWords has not been updated (means initially, it's null, and we can't return null).
     override fun getItemCount(): Int {
         return if (mAlbums != null)
             mAlbums!!.size
@@ -53,11 +51,11 @@ internal class AlbumListAdapter internal constructor(context: Context) : Recycle
             0
     }
 
-    internal inner class WordViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val wordItemView: TextView
+    internal inner class AlbumViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val albumItemView: TextView
 
         init {
-            wordItemView = itemView.findViewById(R.id.textView)
+            albumItemView = itemView.findViewById(R.id.textView)
         }
     }
 
