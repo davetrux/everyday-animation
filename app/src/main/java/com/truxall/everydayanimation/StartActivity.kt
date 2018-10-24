@@ -1,15 +1,18 @@
 package com.truxall.everydayanimation
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.app.ActionBar
-import android.support.v7.app.ActionBarDrawerToggle
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
-
-import kotlinx.android.synthetic.main.start_activity.*
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 
 class StartActivity : AppCompatActivity() {
+
+    private var mToolbar: Toolbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +20,8 @@ class StartActivity : AppCompatActivity() {
 
         val navController = Navigation.findNavController(this, R.id.nav_host)
 
-        setSupportActionBar(toolbar)
+        this.mToolbar = this.findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(this.mToolbar)
         val actionbar: ActionBar? = supportActionBar
         actionbar?.apply {
             setDisplayHomeAsUpEnabled(true)
@@ -26,15 +30,14 @@ class StartActivity : AppCompatActivity() {
 
         setupDrawerToggle()
 
-        NavigationUI.setupWithNavController(nav_view, navController)
+        val navView = this.findViewById<NavigationView>(R.id.nav_view)
+        navView.setupWithNavController(navController)
     }
 
     private fun setupDrawerToggle() {
-        val mDrawerToggle = object : ActionBarDrawerToggle(this, drawer_layout, toolbar, R.string.open, R.string.close) {}
-        drawer_layout.addDrawerListener(mDrawerToggle)
+        val drawerLayout = this.findViewById<DrawerLayout>(R.id.drawer_layout)
+        val mDrawerToggle = object : ActionBarDrawerToggle(this, drawerLayout, this.mToolbar, R.string.open, R.string.close) {}
+        drawerLayout.addDrawerListener(mDrawerToggle)
         mDrawerToggle.syncState()
-
     }
-
-
 }

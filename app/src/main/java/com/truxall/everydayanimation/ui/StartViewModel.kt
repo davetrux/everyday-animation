@@ -1,7 +1,8 @@
 package com.truxall.everydayanimation.ui.ui
 
-import android.arch.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 
-class StartViewModel : ViewModel() {
+class StartViewModel(application: Application) : AndroidViewModel(application) {
     // TODO: Implement the ViewModel
 }

@@ -1,7 +1,6 @@
 package com.truxall.everydayanimation.ui
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Album
 import android.graphics.BitmapFactory
 import android.widget.ImageView
+import androidx.recyclerview.widget.RecyclerView
 
 
 internal class AlbumListAdapter internal constructor(context: Context) : RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>() {

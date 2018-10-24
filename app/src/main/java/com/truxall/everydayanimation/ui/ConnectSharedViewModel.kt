@@ -1,8 +1,9 @@
 package com.truxall.everydayanimation.ui
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+
 import com.truxall.everydayanimation.data.Artist
 import com.truxall.everydayanimation.data.ArtistRepository
 

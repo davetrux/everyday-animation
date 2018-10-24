@@ -1,8 +1,9 @@
 package com.truxall.everydayanimation.data
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Query
+
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Query
 
 @Dao
 interface ArtistDao {
@@ -11,7 +12,7 @@ interface ArtistDao {
     fun getArtists(): LiveData<List<Artist>>
 
     @Query("SELECT * FROM artist WHERE id = :artistId")
-    fun getArtistById(artistId: Int): Artist
+    fun getArtistById(artistId: Int): LiveData<Artist>
 
     @Query("SELECT * FROM album WHERE artistId = :artistId ORDER BY year ASC")
     fun getAlbums(artistId: Int): LiveData<List<Album>>

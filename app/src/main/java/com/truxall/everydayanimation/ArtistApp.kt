@@ -1,9 +1,7 @@
 package com.truxall.everydayanimation
 
 import android.app.Application
-import android.arch.persistence.room.Room
-import android.content.Context
-import android.util.Log
+import androidx.room.Room
 import com.truxall.everydayanimation.data.ArtistDatabase
 import timber.log.Timber
 
@@ -25,7 +23,7 @@ class ArtistApp: Application() {
             Utils.copyDataBase(this, Utils.dbName)
         }
         catch(ex: Exception) {
-            Timber.e(ex, "Could not copy database file")
+             Timber.e(ex, "Could not copy database file")
         }
         ArtistApp.database = Room.databaseBuilder(this, ArtistDatabase::class.java, Utils.dbName).build()
     }
