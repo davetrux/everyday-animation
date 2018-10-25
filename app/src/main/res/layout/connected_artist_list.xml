@@ -2,38 +2,14 @@
 <androidx.constraintlayout.motion.widget.MotionLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
     app:layoutDescription="@xml/connected_scene"
     app:showPaths="false"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    android:id="@+id/artist_motion">
 
-    <ImageView
-        android:id="@+id/artist_image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:minWidth="70dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="10dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/artist_name"
-        style="@style/text_view_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/artist_image"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="placeholder text" />
+    <include layout="@layout/connected_artist_cell" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

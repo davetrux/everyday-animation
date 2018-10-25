@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/artist_thumb"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:minWidth="70dp"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="10dp"
+        android:scaleType="fitXY"
+        motion:layout_constraintBottom_toBottomOf="parent"
+        motion:layout_constraintStart_toStartOf="parent"
+        motion:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/artist_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        motion:layout_constraintStart_toStartOf="parent"
+        motion:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/artist_name"
+        style="@style/text_view_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
+        motion:layout_constrainedWidth="true"
+        motion:layout_constraintVertical_bias="0.05"
+        motion:layout_constraintHorizontal_bias="10.0"
+        motion:layout_constraintTop_toBottomOf="@id/artist_image"
+        tools:text="placeholder text" />
+
+    <TextView
+        android:id="@+id/artist_genre"
+        style="@style/artist_genre"
+        android:alpha="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
+        motion:layout_constrainedWidth="true"
+        motion:layout_constraintVertical_bias="2.0"
+        motion:layout_constraintHorizontal_bias="20.0"
+        motion:layout_constraintTop_toBottomOf="@id/artist_image"
+        motion:layout_constraintLeft_toRightOf="@id/artist_name"
+        tools:text="Genre"/>
+
+    <TextView
+        android:id="@+id/artist_bio"
+        android:alpha="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="viewStart"
+        motion:layout_constrainedWidth="true"
+        android:layout_marginTop="20dp"
+        motion:layout_constraintTop_toBottomOf="@id/artist_name"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
