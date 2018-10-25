@@ -22,4 +22,8 @@ class ArtistRepository internal constructor(application: Application) {
         val albums = artistDao.getAlbums(artistId)
         return albums
     }
+
+    fun artistById(artistId: Int): LiveData<Artist> {
+        return artistDao.getArtistById(artistId)
+    }
 }

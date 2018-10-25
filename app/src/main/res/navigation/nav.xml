@@ -21,4 +21,12 @@
         android:name="com.truxall.everydayanimation.ui.ConnectSharedFragment"
         android:label="@string/list"
         tools:layout="@layout/connected_fragment" />
+
+    <fragment
+        android:id="@+id/artist_detail_fragment"
+        android:name="com.truxall.everydayanimation.ui.ArtistDetailFragment"
+        android:label="Artist Detail"
+        tools:layout="@layout/artist_detail">
+
+    </fragment>
 </navigation>

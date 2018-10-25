@@ -12,4 +12,8 @@
         android:id="@+id/connected_fragment"
         android:icon="@android:drawable/ic_menu_directions"
         android:title="@string/connected" />
+    <item
+        android:id="@+id/artist_detail_fragment"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="@string/motion" />
 </menu>
