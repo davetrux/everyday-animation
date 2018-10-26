@@ -6,4 +6,5 @@
     <color name="colorText">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#e0e0e0e0</color>
+    <color name="colorLabelFab">#000000</color>
 </resources>

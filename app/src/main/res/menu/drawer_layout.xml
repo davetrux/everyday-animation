@@ -16,4 +16,8 @@
         android:id="@+id/artist_detail_fragment"
         android:icon="@android:drawable/ic_menu_gallery"
         android:title="@string/motion" />
+    <item
+        android:id="@+id/floating_menu_fragment"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/floating" />
 </menu>

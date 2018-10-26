@@ -29,4 +29,11 @@
         tools:layout="@layout/artist_detail">
 
     </fragment>
+
+    <fragment
+        android:id="@+id/floating_menu_fragment"
+        android:name="com.truxall.everydayanimation.ui.FloatingMenuFragment"
+        android:label="@string/floating"
+        tools:layout="@layout/floating_menu_fragment" />
+
 </navigation>

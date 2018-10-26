@@ -13,4 +13,5 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="motion">Motion Layout</string>
+    <string name="floating">Floating Menu</string>
 </resources>

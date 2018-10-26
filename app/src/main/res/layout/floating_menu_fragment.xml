@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/floating_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGray"
+    android:layout_marginTop="?attr/actionBarSize"
+    tools:context=".ui.FloatingMenuFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Hello" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/baseFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{FabHandler::onBaseFabClick}"
+        android:tint="@android:color/white"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/floating_fragment"
+        app:layout_constraintRight_toRightOf="@+id/floating_fragment"
+        app:srcCompat="@drawable/ic_add_black" />
+
+    <LinearLayout
+        android:id="@+id/shareLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/createLayout"
+        app:layout_constraintLeft_toLeftOf="@+id/createLayout"
+        app:layout_constraintRight_toRightOf="@+id/floating_fragment">
+
+        <TextView
+            android:id="@+id/shareLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/button_label"
+            android:elevation="2dp"
+            android:fontFamily="sans-serif"
+            android:padding="5dip"
+            android:text="Share"
+            android:textColor="@android:color/white"
+            android:typeface="normal" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/shareFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="@{FabHandler::onShareFabClick}"
+            android:tint="@android:color/white"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_share_black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/createLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/baseFloatingActionButton"
+        app:layout_constraintRight_toRightOf="@+id/floating_fragment">
+
+        <TextView
+            android:id="@+id/createLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/button_label"
+            android:elevation="2dp"
+            android:fontFamily="sans-serif"
+            android:padding="5dip"
+            android:text="Create"
+            android:textColor="@android:color/white"
+            android:typeface="normal" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/createFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="@{FabHandler::onCreateFabClick}"
+            android:tint="@android:color/white"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_create_black" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
