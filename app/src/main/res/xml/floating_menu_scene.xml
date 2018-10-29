@@ -24,7 +24,7 @@
             motion:fabSize="normal"
             motion:layout_constraintBottom_toBottomOf="@id/floating_fragment"
             motion:layout_constraintRight_toRightOf="@id/floating_fragment"
-            motion:srcCompat="@drawable/ic_add_black"/>
+            motion:srcCompat="@drawable/ic_add"/>
         <Constraint
             android:id="@id/createLayout"
             android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
             motion:fabSize="normal"
             motion:layout_constraintBottom_toBottomOf="@id/floating_fragment"
             motion:layout_constraintRight_toRightOf="@id/floating_fragment"
-            motion:srcCompat="@drawable/ic_add_black"/>
+            motion:srcCompat="@drawable/ic_add"/>
         <Constraint
             android:id="@id/createLayout"
             android:layout_width="wrap_content"

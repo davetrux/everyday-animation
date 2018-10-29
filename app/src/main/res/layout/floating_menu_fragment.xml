@@ -21,7 +21,7 @@
         android:id="@+id/mainFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_add_black"/>
+        app:srcCompat="@drawable/ic_add"/>
 
     <LinearLayout
         android:id="@+id/shareLayout"
@@ -50,7 +50,7 @@
             android:focusable="true"
             android:tint="@android:color/white"
             app:fabSize="mini"
-            app:srcCompat="@drawable/ic_share_black" />
+            app:srcCompat="@drawable/ic_share" />
 
     </LinearLayout>
 
@@ -81,7 +81,7 @@
             android:focusable="true"
             android:tint="@android:color/white"
             app:fabSize="mini"
-            app:srcCompat="@drawable/ic_create_black" />
+            app:srcCompat="@drawable/ic_create" />
 
     </LinearLayout>
 </androidx.constraintlayout.motion.widget.MotionLayout>
