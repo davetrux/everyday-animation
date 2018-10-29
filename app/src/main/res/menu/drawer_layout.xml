@@ -20,4 +20,12 @@
         android:id="@+id/floating_menu_fragment"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/floating" />
+    <item
+        android:id="@+id/button_state_fragment"
+        android:icon="@android:drawable/ic_menu_compass"
+        android:title="@string/state" />
+    <item
+        android:id="@+id/button_attention_fragment"
+        android:icon="@android:drawable/ic_menu_send"
+        android:title="@string/attention" />
 </menu>

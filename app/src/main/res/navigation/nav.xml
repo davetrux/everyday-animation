@@ -36,4 +36,16 @@
         android:label="@string/floating"
         tools:layout="@layout/floating_menu_fragment" />
 
+    <fragment
+        android:id="@+id/button_state_fragment"
+        android:name="com.truxall.everydayanimation.ui.ButtonStateFragment"
+        android:label="@string/state"
+        tools:layout="@layout/button_state_fragment" />
+
+    <fragment
+        android:id="@+id/button_attention_fragment"
+        android:name="com.truxall.everydayanimation.ui.ButtonAttentionFragment"
+        android:label="@string/attention"
+        tools:layout="@layout/button_attention_fragment" />
+
 </navigation>

@@ -14,4 +14,9 @@
     <string name="close">Close</string>
     <string name="motion">Motion Layout</string>
     <string name="floating">Floating Menu</string>
+    <string name="state">Button State</string>
+    <string name="attention">Button Attention</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
