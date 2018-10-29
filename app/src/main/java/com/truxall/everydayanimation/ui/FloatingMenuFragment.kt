@@ -1,15 +1,14 @@
 package com.truxall.everydayanimation.ui
 
-import android.opengl.Visibility
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 import com.truxall.everydayanimation.R
@@ -45,11 +44,12 @@ class FloatingMenuFragment : Fragment() {
         this.addLayout = view.findViewById(R.id.createLayout)
 
         this.fab.setOnClickListener {
+            val motionView = view as MotionLayout
             if(this.menuOpen) {
-                this.closeMenu()
+                motionView.transitionToStart()
                 this.menuOpen = false
             } else {
-                this.openMenu()
+                motionView.transitionToEnd()
                 this.menuOpen = true
             }
         }

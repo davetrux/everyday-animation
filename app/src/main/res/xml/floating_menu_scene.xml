@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetStart="@id/start"
+        motion:constraintSetEnd="@id/end"
+        motion:duration="500">
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/mainFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:rotation = "0"
+            android:tint="@android:color/white"
+            motion:fabSize="normal"
+            motion:layout_constraintBottom_toBottomOf="@id/floating_fragment"
+            motion:layout_constraintRight_toRightOf="@id/floating_fragment"
+            motion:srcCompat="@drawable/ic_add_black"/>
+        <Constraint
+            android:id="@id/createLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toTopOf="@+id/mainFab"
+            motion:layout_constraintRight_toRightOf="@+id/floating_fragment"/>
+        <Constraint
+            android:id="@id/shareLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toTopOf="@id/createLayout"
+            motion:layout_constraintLeft_toLeftOf="@id/createLayout"
+            motion:layout_constraintRight_toRightOf="@id/floating_fragment"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/mainFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:rotation = "45"
+            android:tint="@android:color/white"
+            motion:fabSize="normal"
+            motion:layout_constraintBottom_toBottomOf="@id/floating_fragment"
+            motion:layout_constraintRight_toRightOf="@id/floating_fragment"
+            motion:srcCompat="@drawable/ic_add_black"/>
+        <Constraint
+            android:id="@id/createLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toTopOf="@+id/mainFab"
+            motion:layout_constraintRight_toRightOf="@+id/floating_fragment"/>
+        <Constraint
+            android:id="@id/shareLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toTopOf="@id/createLayout"
+            motion:layout_constraintLeft_toLeftOf="@id/createLayout"
+            motion:layout_constraintRight_toRightOf="@id/floating_fragment"/>
+    </ConstraintSet>
+</MotionScene>
