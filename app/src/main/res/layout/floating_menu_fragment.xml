@@ -16,7 +16,7 @@
         android:text="Hello" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/baseFloatingActionButton"
+        android:id="@+id/mainFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -81,7 +81,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/baseFloatingActionButton"
+        app:layout_constraintBottom_toTopOf="@+id/mainFab"
         app:layout_constraintRight_toRightOf="@+id/floating_fragment">
 
         <TextView
