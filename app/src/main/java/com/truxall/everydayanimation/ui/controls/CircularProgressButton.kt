@@ -20,7 +20,7 @@ class CircularProgressButton : AppCompatButton, CustomizableByAttribute {
         PROGRESS, IDLE, DONE, STOPPED
     }
 
-    private var mGradientDrawable: GradientDrawable? = null
+    private var mGradientDrawable: StateListDrawable? = null
     private var mIsMorphingInProgress: Boolean = false
     private var mState: State? = null
     private var mAnimatedDrawable: CircularAnimatedDrawable? = null
@@ -82,7 +82,9 @@ class CircularProgressButton : AppCompatButton, CustomizableByAttribute {
      * @param attrs Atributes passed in the XML
      */
     private fun init(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) {
-        mParams = Params()
+        this.mGradientDrawable =  context.getDrawable(R.drawable.button_default_shape) as StateListDrawable
+
+        this.mParams = Params()
 
         mParams.mPaddingProgress = 0f
 
@@ -113,11 +115,11 @@ class CircularProgressButton : AppCompatButton, CustomizableByAttribute {
     }
 
     override fun setBackgroundColor(color: Int) {
-        mGradientDrawable!!.setColor(color)
+       // mGradientDrawable!!.setColor(color)
     }
 
     override fun setBackgroundResource(@ColorRes resid: Int) {
-        mGradientDrawable!!.setColor(ContextCompat.getColor(context, resid))
+        //mGradientDrawable!!.setColor(ContextCompat.getColor(context, resid))
     }
 
     override fun setSpinningBarColor(color: Int) {
