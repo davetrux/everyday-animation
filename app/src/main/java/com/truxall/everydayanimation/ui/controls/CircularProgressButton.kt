@@ -13,6 +13,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.Utils
+import timber.log.Timber
 
 class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCode {
     private enum class State {
@@ -101,17 +102,11 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
 
         mParams.mPaddingProgress = 0f
 
-        val drawables: BackgroundAndMorphingDrawables?
-
-        if (attrs == null) {
-            drawables = this.loadGradientDrawable(context.getDrawable(R.drawable.button_default_shape))
-        } else {
+        if (attrs != null) {
             val attrsArray = intArrayOf(android.R.attr.background)// 0
 
             val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularProgressButton, defStyleAttr, defStyleRes)
             val typedArrayBG = context.obtainStyledAttributes(attrs, attrsArray, defStyleAttr, defStyleRes)
-
-            drawables = loadGradientDrawable(typedArrayBG.getDrawable(0))
 
             mParams.mInitialCornerRadius = typedArray.getDimension(
                     R.styleable.CircularProgressButton_initialCornerAngle, 0f)
@@ -129,15 +124,8 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
 
         mState = State.IDLE
 
-        mParams.mText = this.getText().toString()
-        mParams.mDrawables = this.getCompoundDrawablesRelative()
-
-        if (drawables != null) {
-            mGradientDrawable = drawables.morphingDrawable
-            if (drawables.backGroundDrawable != null) {
-                setBackground(drawables.backGroundDrawable)
-            }
-        }
+        mParams.mText = this.text.toString()
+        mParams.mDrawables = this.compoundDrawablesRelative
 
         resetProgress()
     }
@@ -191,13 +179,13 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
 
         layoutDone = true
         if (shouldStartAnimation) {
-            startAnimation()
+            this.startAnimation()
         }
 
         if (mState == State.PROGRESS && !mIsMorphingInProgress) {
-            drawProgress(canvas)
+            this.drawProgress(canvas)
         } else if (mState == State.DONE) {
-            drawDoneAnimation(canvas)
+            this.drawDoneAnimation(canvas)
         }
     }
 
@@ -209,11 +197,12 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
      */
     private fun drawProgress(canvas: Canvas) {
         if (mAnimatedDrawable == null || !mAnimatedDrawable!!.isRunning) {
+            Timber.d("Created Circular Drawable")
             mAnimatedDrawable = CircularAnimatedDrawable(this,
                     mParams.mSpinningBarWidth,
                     mParams.mSpinningBarColor)
 
-            val offset = (getWidth() - getHeight()) / 2
+            val offset = (width - height) / 2
 
             val left = offset + mParams.mPaddingProgress.toInt()
             val right = width - offset - mParams.mPaddingProgress.toInt()
@@ -224,6 +213,7 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
             mAnimatedDrawable!!.callback = this
             mAnimatedDrawable!!.start()
         } else {
+            this.progress++
             mAnimatedDrawable!!.setProgress(progress)
             mAnimatedDrawable!!.draw(canvas)
         }
@@ -247,7 +237,7 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
     }
 
     /**
-     * Stops the animation and sets the button in the STOPED state.
+     * Stops the animation and sets the button in the STOPPED state.
      */
     fun stopAnimation() {
         if (mState == State.PROGRESS && !mIsMorphingInProgress) {
@@ -351,18 +341,6 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
             layoutParams.height = animatedVal
             setLayoutParams(layoutParams)
         }
-
-        /*ValueAnimator strokeAnimation = ValueAnimator.ofFloat(
-                   getResources().getDimension(R.dimen.stroke_login_button),
-                   getResources().getDimension(R.dimen.stroke_login_button_loading));
-
-           strokeAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-               @Override
-               public void onAnimationUpdate(ValueAnimator animation) {
-
-                   ((ShapeDrawable)mGradientDrawable).getPaint().setStrokeWidth((Float)animation.getAnimatedValue());
-               }
-           });*/
 
         mAnimatorSet = AnimatorSet()
         mAnimatorSet!!.duration = 300
@@ -469,35 +447,6 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
         mAnimatorSet!!.start()
     }
 
-    private fun loadGradientDrawable(drawable: Drawable?): BackgroundAndMorphingDrawables? {
-        var mGradientDrawable: BackgroundAndMorphingDrawables? = BackgroundAndMorphingDrawables()
-
-        if (drawable == null)
-            return null
-        else {
-            when (drawable) {
-                is GradientDrawable -> mGradientDrawable!!.setBothDrawables(drawable)
-                is ColorDrawable -> {
-                    val colorDrawable = drawable as ColorDrawable?
-                    val gradientDrawable = GradientDrawable()
-                    gradientDrawable.setColor(colorDrawable!!.color)
-                    mGradientDrawable!!.setBothDrawables(gradientDrawable)
-                }
-                is StateListDrawable -> {
-                    val stateListDrawable = drawable as StateListDrawable?
-                    stateListDrawable!!.state = intArrayOf(android.R.attr.state_enabled, android.R.attr.state_active, -android.R.attr.state_pressed)
-                    val current = stateListDrawable.current
-                    mGradientDrawable = loadGradientDrawable(current)
-                }
-            }
-            if (mGradientDrawable!!.morphingDrawable == null) {
-                throw RuntimeException("Error reading background... Use a shape or a color in xml!")
-            }
-        }
-
-        return mGradientDrawable
-    }
-
     /**
      * Class with all the params to configure the button.
      */
@@ -512,15 +461,5 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
         var mInitialCornerRadius: Float = 0f
         var mFinalCornerRadius: Float = 0f
         var mDrawables: Array<Drawable>? = null
-    }
-
-    internal class BackgroundAndMorphingDrawables {
-        var backGroundDrawable: Drawable? = null
-        var morphingDrawable: GradientDrawable? = null
-
-        fun setBothDrawables(drawable: GradientDrawable) {
-            this.backGroundDrawable = drawable
-            this.morphingDrawable = drawable
-        }
     }
 }

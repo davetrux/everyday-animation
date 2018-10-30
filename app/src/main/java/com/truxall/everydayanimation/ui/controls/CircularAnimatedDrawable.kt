@@ -10,6 +10,7 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.graphics.drawable.Drawable
 import android.view.View
+import timber.log.Timber
 
 
 class CircularAnimatedDrawable(view: View, private val mBorderWidth: Float, arcColor: Int) : Drawable(), Animatable {
@@ -33,7 +34,7 @@ class CircularAnimatedDrawable(view: View, private val mBorderWidth: Float, arcC
     private val mAnimatorSet: AnimatorSet?
     private var running: Boolean = false
     private var mModeAppearing: Boolean = false
-    private var progress: Int = 0
+    private var progress: Int = 1
     private var shownProgress: Float = 0f
     private var shouldDraw: Boolean = true
     private val mAnimatedView: View
@@ -169,8 +170,10 @@ class CircularAnimatedDrawable(view: View, private val mBorderWidth: Float, arcC
     }
 
     fun setProgress(progress: Int) {
-        if (this.progress == progress)
+        if (this.progress == progress) {
+            Timber.d("NO PROGRESS")
             return
+        }
 
         this.progress = progress
 
