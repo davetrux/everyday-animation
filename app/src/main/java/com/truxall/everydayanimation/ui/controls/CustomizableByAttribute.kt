@@ -1,6 +1,6 @@
 package com.truxall.everydayanimation.ui.controls
 
-internal interface CustomizableByCode {
+internal interface CustomizableByAttribute {
     fun setSpinningBarWidth(width: Float)
     fun setSpinningBarColor(color: Int)
     fun setDoneColor(color: Int)

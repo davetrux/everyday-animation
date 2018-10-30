@@ -15,38 +15,22 @@ import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.Utils
 import timber.log.Timber
 
-class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCode {
+class CircularProgressButton : AppCompatButton, CustomizableByAttribute {
     private enum class State {
         PROGRESS, IDLE, DONE, STOPPED
     }
 
     private var mGradientDrawable: GradientDrawable? = null
-
     private var mIsMorphingInProgress: Boolean = false
     private var mState: State? = null
     private var mAnimatedDrawable: CircularAnimatedDrawable? = null
-    private var mRevealDrawable: CircularRevealAnimatedDrawable? = null
     private var mAnimatorSet: AnimatorSet? = null
-
     private var mFillColorDone: Int = 0
-    private var progress: Int = 0
-
     private var mBitmapDone: Bitmap? = null
-
     private lateinit var mParams: Params
-
     private var doneWhileMorphing: Boolean = false
     private var shouldStartAnimation: Boolean = false
     private var layoutDone: Boolean = false
-
-
-    /**
-     * Check if button is animating
-     */
-    val isAnimating: Boolean?
-        get() = mState == State.PROGRESS
-
-
 
     /**
      *
@@ -126,8 +110,6 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
 
         mParams.mText = this.text.toString()
         mParams.mDrawables = this.compoundDrawablesRelative
-
-        resetProgress()
     }
 
     override fun setBackgroundColor(color: Int) {
@@ -184,8 +166,6 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
 
         if (mState == State.PROGRESS && !mIsMorphingInProgress) {
             this.drawProgress(canvas)
-        } else if (mState == State.DONE) {
-            this.drawDoneAnimation(canvas)
         }
     }
 
@@ -213,29 +193,9 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
             mAnimatedDrawable!!.callback = this
             mAnimatedDrawable!!.start()
         } else {
-            this.progress++
-            mAnimatedDrawable!!.setProgress(progress)
             mAnimatedDrawable!!.draw(canvas)
         }
     }
-
-
-    /**
-     * @param progress set a progress to switch displaying a determinate circular progress
-     */
-    override fun setProgress(progress: Int) {
-        val temp = Math.max(CircularAnimatedDrawable.MIN_PROGRESS,
-                Math.min(CircularAnimatedDrawable.MAX_PROGRESS, progress))
-        this.progress = temp
-    }
-
-    /**
-     * resets a given progress and shows an indeterminate progress animation
-     */
-    override fun resetProgress() {
-        this.progress = CircularAnimatedDrawable.MIN_PROGRESS - 1
-    }
-
     /**
      * Stops the animation and sets the button in the STOPPED state.
      */
@@ -247,15 +207,9 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
     }
 
     /**
-     * Call this method when you want to show a 'completed' or a 'done' status. You have to choose the
-     * color and the image to be shown. If your loading progress ended with a success status you probrably
-     * want to put a icon for "sucess" and a blue color, otherwise red and a failure icon. You can also
-     * show that a music is completed... or show some status on a game... be creative!
-     *
-     * @param fillColor The color of the background of the button
-     * @param bitmap The image that will be shown
-     */
-    fun doneLoadingAnimation(fillColor: Int, bitmap: Bitmap?) {
+     * Call this method when you want to show a 'completed' or a 'done' status.
+     **/
+    private fun doneLoadingAnimation(fillColor: Int, bitmap: Bitmap?) {
         if (mState != State.PROGRESS) {
             return
         }
@@ -269,39 +223,14 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
 
         mState = State.DONE
         mAnimatedDrawable!!.stop()
-
-        mRevealDrawable = CircularRevealAnimatedDrawable(this, fillColor, bitmap)
-
-        val left = 0
-        val right = width
-        val bottom = height
-        val top = 0
-
-        mRevealDrawable!!.setBounds(left, top, right, bottom)
-        mRevealDrawable!!.callback = this
-        mRevealDrawable!!.start()
     }
 
-    /**
-     * Method called on the onDraw when the button is on DONE status
-     *
-     * @param canvas Canvas
-     */
-    private fun drawDoneAnimation(canvas: Canvas) {
-        mRevealDrawable!!.draw(canvas)
-    }
-
-    override fun revertAnimation() {
-        // Crap
-    }
-
-    override fun revertAnimation(onAnimationEndListener: OnAnimationEndListener) {
+    fun revertAnimation() {
         if (mState == State.IDLE) {
             return
         }
 
         mState = State.IDLE
-        resetProgress()
 
         if (mAnimatedDrawable != null && mAnimatedDrawable!!.isRunning) {
             stopAnimation()
@@ -355,7 +284,6 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
                 mIsMorphingInProgress = false
                 text = mParams.mText
                 setCompoundDrawablesRelative(mParams.mDrawables!![0], mParams.mDrawables!![1], mParams.mDrawables!![2], mParams.mDrawables!![3])
-                onAnimationEndListener.onAnimationEnd()
             }
         })
 
@@ -363,20 +291,16 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
         mAnimatorSet!!.start()
     }
 
-    override fun dispose() {
+    fun dispose() {
         if (mAnimatedDrawable != null) {
             mAnimatedDrawable!!.dispose()
-        }
-
-        if (mRevealDrawable != null) {
-            mRevealDrawable!!.dispose()
         }
     }
 
     /**
      * Method called to start the animation. Morphs in to a ball and then starts a loading spinner.
      */
-    override fun startAnimation() {
+    fun startAnimation() {
         if (mState != State.IDLE) {
             return
         }
@@ -454,7 +378,7 @@ class CircularProgressButton : AppCompatButton, AnimatedButton, CustomizableByCo
         var mSpinningBarWidth: Float = 0f
         var mSpinningBarColor: Int = 0
         var mDoneColor: Int = 0
-        var mPaddingProgress: Float = 0f
+        var mPaddingProgress: Float = 3f
         var mInitialHeight: Int = 0
         var mInitialWidth: Int = 0
         var mText: String? = null

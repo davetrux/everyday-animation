@@ -30,8 +30,9 @@ class ButtonStateFragment : Fragment() {
             val runnable = {
                 this.morphButton.stopAnimation()
                 Toast.makeText(view.context, "Done", Toast.LENGTH_SHORT).show()
+                this.morphButton.revertAnimation()
             }
-            Handler().postDelayed(runnable, 13000)
+            Handler().postDelayed(runnable, 5000)
         }
     }
 }
