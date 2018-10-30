@@ -1,6 +1,7 @@
 package com.truxall.everydayanimation
 
 import android.content.Context
+import android.os.Build
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -29,5 +30,13 @@ class Utils {
         }
 
         val dbName = "ArtistDatabase.db"
+
+        fun getColorWrapper(context: Context, id: Int) : Int {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                return context.getColor(id)
+            } else {
+                return context.getResources().getColor(id)
+            }
+        }
     }
 }
