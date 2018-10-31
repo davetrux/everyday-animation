@@ -28,9 +28,9 @@ class ButtonAttentionFragment: Fragment() {
         this.morphButton.setOnClickListener {
             this.morphButton.startAnimation()
             val runnable = {
-                //this.morphButton.stopAnimation()
+                this.morphButton.stopAnimation()
                 Toast.makeText(view.context, "Done", Toast.LENGTH_SHORT).show()
-                // this.morphButton.revertAnimation()
+                this.morphButton.revertAnimation()
             }
             Handler().postDelayed(runnable, 5000)
         }

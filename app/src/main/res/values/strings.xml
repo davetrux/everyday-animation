@@ -16,6 +16,7 @@
     <string name="floating">Floating Menu</string>
     <string name="state">Button State</string>
     <string name="attention">Button Attention</string>
+    <string name="morph_button">Go! Go! Go!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
