@@ -8,17 +8,14 @@
     android:layout_marginTop="?attr/actionBarSize"
     tools:context=".ui.ButtonAttentionFragment">
 
-    <com.truxall.everydayanimation.ui.controls.ProgressButton
-        android:id="@+id/progress_button"
+    <TextView
+        android:id="@+id/attention"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="32dp"
-        android:background="@drawable/button_default_shape"
-        android:text="@string/morph_button"
-        android:textColor="@android:color/white"
-        android:transitionName="transition"
+        android:text="@string/attention"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

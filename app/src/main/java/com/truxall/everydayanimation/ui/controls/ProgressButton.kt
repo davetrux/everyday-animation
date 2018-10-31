@@ -29,8 +29,8 @@ class ProgressButton : AppCompatButton {
     private var mAnimatedDrawable: ProgressAnimatedDrawable? = null
     private var mInitialHeight: Int = 0
     private var mInitialWidth: Int = 0
-    private val mInitialCornerRadius: Float = 0f
-    private val mFinalCornerRadius: Float = 1000f
+    private val initialCornerRadius: Float = 0f
+    private val finalCornerRadius: Float = 1000f
     private lateinit var mButtonText: CharSequence
     private lateinit var mDrawables: Array<Drawable>
 
@@ -115,8 +115,8 @@ class ProgressButton : AppCompatButton {
 
         val cornerAnimation = ObjectAnimator.ofFloat(mGradientDrawable,
                 "cornerRadius",
-                this.mInitialCornerRadius,
-                this.mFinalCornerRadius)
+                this.initialCornerRadius,
+                this.finalCornerRadius)
 
         val widthAnimation = ValueAnimator.ofInt(this.mInitialWidth, toWidth)
         widthAnimation.addUpdateListener { valueAnimator ->
@@ -135,7 +135,7 @@ class ProgressButton : AppCompatButton {
         }
 
         mMorphingAnimatorSet = AnimatorSet()
-        mMorphingAnimatorSet.setDuration(300)
+        mMorphingAnimatorSet.duration = 300
         mMorphingAnimatorSet.playTogether(cornerAnimation, widthAnimation, heightAnimation)
         mMorphingAnimatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
@@ -152,7 +152,7 @@ class ProgressButton : AppCompatButton {
         }
 
         if (mIsMorphingInProgress) {
-            mMorphingAnimatorSet!!.cancel()
+            mMorphingAnimatorSet.cancel()
         }
 
         isClickable = false
@@ -163,11 +163,10 @@ class ProgressButton : AppCompatButton {
         val toHeight = this.mInitialHeight
         val toWidth = this.mInitialWidth
 
-        var cornerAnimation: ObjectAnimator? = null
-        cornerAnimation = ObjectAnimator.ofFloat(mGradientDrawable,
+        val cornerAnimation = ObjectAnimator.ofFloat(mGradientDrawable,
                     "cornerRadius",
-                    this.mFinalCornerRadius,
-                    this.mInitialCornerRadius)
+                    this.finalCornerRadius,
+                    this.initialCornerRadius)
 
 
         val widthAnimation = ValueAnimator.ofInt(fromWidth, toWidth)
@@ -189,11 +188,11 @@ class ProgressButton : AppCompatButton {
         mMorphingAnimatorSet = AnimatorSet()
         mMorphingAnimatorSet.duration = 300
 
-        mMorphingAnimatorSet!!.playTogether(cornerAnimation, widthAnimation, heightAnimation)
+        mMorphingAnimatorSet.playTogether(cornerAnimation, widthAnimation, heightAnimation)
 
-        mMorphingAnimatorSet!!.addListener(object : AnimatorListenerAdapter() {
+        mMorphingAnimatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
-                setClickable(true)
+                isClickable = true
                 mIsMorphingInProgress = false
                 text = mButtonText
                 setCompoundDrawablesRelative(mDrawables[0], mDrawables[1], mDrawables[2], mDrawables[3])
@@ -201,6 +200,6 @@ class ProgressButton : AppCompatButton {
         })
 
         mIsMorphingInProgress = true
-        mMorphingAnimatorSet!!.start()
+        mMorphingAnimatorSet.start()
     }
 }

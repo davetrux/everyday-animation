@@ -9,11 +9,9 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import android.R.string.cancel
 import android.graphics.Canvas
 import android.graphics.PixelFormat
 import android.graphics.ColorFilter
-import androidx.core.view.ViewCompat.setAlpha
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 
@@ -22,11 +20,11 @@ class ProgressAnimatedDrawable(view: View, borderWidth: Float, arcColor: Int) : 
 
     private var mValueAnimatorAngle: ValueAnimator? = null
     private var mValueAnimatorSweep: ValueAnimator? = null
-    private val ANGLE_INTERPOLATOR = LinearInterpolator()
-    private val SWEEP_INTERPOLATOR = DecelerateInterpolator()
-    private val ANGLE_ANIMATOR_DURATION = 2000L
-    private val SWEEP_ANIMATOR_DURATION = 900L
-    private val MIN_SWEEP_ANGLE = 30f
+    private val angleInterpolator = LinearInterpolator()
+    private val sweepInterpolator = DecelerateInterpolator()
+    private val angleAnimatorDuration = 2000L
+    private val sweepAnimatorDuration = 900L
+    private val minSweepAngle = 30f
 
     private val fBounds = RectF()
     private var mPaint: Paint
@@ -45,10 +43,10 @@ class ProgressAnimatedDrawable(view: View, borderWidth: Float, arcColor: Int) : 
         this.mBorderWidth = borderWidth
 
         this.mPaint = Paint()
-        this.mPaint.setAntiAlias(true)
-        this.mPaint.setStyle(Paint.Style.STROKE)
-        this.mPaint.setStrokeWidth(borderWidth)
-        this.mPaint.setColor(arcColor)
+        this.mPaint.isAntiAlias = true
+        this.mPaint.style = Paint.Style.STROKE
+        this.mPaint.strokeWidth = borderWidth
+        this.mPaint.color = arcColor
 
         this.setupAnimations()
     }
@@ -89,10 +87,10 @@ class ProgressAnimatedDrawable(view: View, borderWidth: Float, arcColor: Int) : 
         var startAngle = mCurrentGlobalAngle - mCurrentGlobalAngleOffset
         var sweepAngle = mCurrentSweepAngle
         if (!mModeAppearing) {
-            startAngle = startAngle + sweepAngle
-            sweepAngle = 360 - sweepAngle - MIN_SWEEP_ANGLE
+            startAngle += sweepAngle
+            sweepAngle = 360 - sweepAngle - minSweepAngle
         } else {
-            sweepAngle += MIN_SWEEP_ANGLE
+            sweepAngle += minSweepAngle
         }
 
         canvas.drawArc(fBounds, startAngle, sweepAngle, false, mPaint)
@@ -112,17 +110,17 @@ class ProgressAnimatedDrawable(view: View, borderWidth: Float, arcColor: Int) : 
 
     private fun setupAnimations() {
         mValueAnimatorAngle = ValueAnimator.ofFloat(0f, 360f)
-        mValueAnimatorAngle!!.interpolator = ANGLE_INTERPOLATOR
-        mValueAnimatorAngle!!.setDuration(ANGLE_ANIMATOR_DURATION)
+        mValueAnimatorAngle!!.interpolator = angleInterpolator
+        mValueAnimatorAngle!!.duration = angleAnimatorDuration
         mValueAnimatorAngle!!.repeatCount = ValueAnimator.INFINITE
         mValueAnimatorAngle!!.addUpdateListener { animation ->
             mCurrentGlobalAngle = animation.animatedValue as Float
             mAnimatedView.invalidate()
         }
 
-        mValueAnimatorSweep = ValueAnimator.ofFloat(0f, 360f - 2 * MIN_SWEEP_ANGLE)
-        mValueAnimatorSweep!!.interpolator = SWEEP_INTERPOLATOR
-        mValueAnimatorSweep!!.setDuration(SWEEP_ANIMATOR_DURATION)
+        mValueAnimatorSweep = ValueAnimator.ofFloat(0f, 360f - 2 * minSweepAngle)
+        mValueAnimatorSweep!!.interpolator = sweepInterpolator
+        mValueAnimatorSweep!!.duration = sweepAnimatorDuration
         mValueAnimatorSweep!!.repeatCount = ValueAnimator.INFINITE
         mValueAnimatorSweep!!.addUpdateListener { animation ->
             mCurrentSweepAngle = animation.animatedValue as Float
@@ -139,7 +137,7 @@ class ProgressAnimatedDrawable(view: View, borderWidth: Float, arcColor: Int) : 
         this.mModeAppearing = !this.mModeAppearing
 
         if (this.mModeAppearing) {
-            this.mCurrentGlobalAngleOffset = (this.mCurrentGlobalAngleOffset + MIN_SWEEP_ANGLE * 0.5f) % 360
+            this.mCurrentGlobalAngleOffset = (this.mCurrentGlobalAngleOffset + minSweepAngle * 0.5f) % 360
         }
     }
 }

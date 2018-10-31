@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGray"
     android:layout_marginTop="?attr/actionBarSize"
     tools:context=".ui.ButtonStateFragment">
 
-    <com.truxall.everydayanimation.ui.controls.CircularProgressButton
-        android:id="@+id/morph_button"
-        android:layout_alignParentBottom="true"
+    <com.truxall.everydayanimation.ui.controls.ProgressButton
+        android:id="@+id/progress_button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/button_default_shape"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        app:spinning_bar_color="@color/colorGray"
-        app:spinning_bar_width="4dp"
-        app:initialCornerAngle="50dp"
-        app:finalCornerAngle="50dp"
-        android:transitionName="transition"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_default_shape"
+        android:text="@string/morph_button"
         android:textColor="@android:color/white"
-        android:text="Click!" />
+        android:transitionName="transition"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

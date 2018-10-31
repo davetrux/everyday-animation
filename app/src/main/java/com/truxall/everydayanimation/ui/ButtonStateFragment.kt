@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 
 import com.truxall.everydayanimation.R
-import com.truxall.everydayanimation.ui.controls.CircularProgressButton
+import com.truxall.everydayanimation.ui.controls.ProgressButton
 
 class ButtonStateFragment : Fragment() {
 
-    private lateinit var morphButton: CircularProgressButton
+    private lateinit var morphButton: ProgressButton
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -23,7 +23,7 @@ class ButtonStateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        this.morphButton = view.findViewById(R.id.morph_button)
+        this.morphButton = view.findViewById(R.id.progress_button)
         this.morphButton.clearAnimation()
         this.morphButton.setOnClickListener {
             this.morphButton.startAnimation()
