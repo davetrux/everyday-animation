@@ -30,7 +30,7 @@ class ConnectSharedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ConnectSharedViewModel::class.java)
 
-        val recyclerView =  view.findViewById<RecyclerView>(R.id.artist_view)
+        val recyclerView =  view.findViewById<RecyclerView>(R.id.artist_recycler_view)
         val adapter = ArtistListAdapter(this.requireContext())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)

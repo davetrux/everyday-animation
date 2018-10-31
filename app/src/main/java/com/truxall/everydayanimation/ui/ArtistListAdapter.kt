@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Artist
+import timber.log.Timber
 
 internal class ArtistListAdapter internal constructor(context: Context) : RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder>() {
 
@@ -31,7 +34,7 @@ internal class ArtistListAdapter internal constructor(context: Context) : Recycl
             val current = mArtists!![position]
             holder.artistNameView.text = current.name
             holder.artistGenre.text = current.genre
-            holder.artistBio.text = current.biography
+            //holder.artistBio.text = current.biography
             val thumb =  BitmapFactory.decodeByteArray(current.thumbNail, 0, current.thumbNail.size)
             holder.artistThumbnail.setImageBitmap(thumb)
             val image =  BitmapFactory.decodeByteArray(current.image, 0, current.image.size)
@@ -40,6 +43,11 @@ internal class ArtistListAdapter internal constructor(context: Context) : Recycl
             // Covers the case of data not being ready yet.
             holder.artistNameView.text = "No Artists"
         }
+//        val motionView = holder.itemView as MotionLayout
+//        motionView.setOnClickListener {
+//            motionView.transitionToEnd()
+//            Timber.d("Tapped")
+//        }
     }
 
     internal fun setArtists(artists: List<Artist>?) {
@@ -59,18 +67,19 @@ internal class ArtistListAdapter internal constructor(context: Context) : Recycl
         val artistThumbnail: ImageView
         val artistImage: ImageView
         val artistGenre: TextView
-        val artistBio: TextView
+        //val artistBio: TextView
 
         init {
             artistNameView = itemView.findViewById(R.id.artist_name)
             artistGenre = itemView.findViewById(R.id.artist_genre)
             artistThumbnail = itemView.findViewById(R.id.artist_thumb)
             artistImage = itemView.findViewById(R.id.artist_image)
-            artistBio = itemView.findViewById(R.id.artist_bio)
+            // artistBio = itemView.findViewById(R.id.artist_bio)
 //            itemView.setOnClickListener {
 //                val motionView = itemView as MotionLayout
 //                motionView.transitionToEnd()
-//                Toast.makeText(itemView.context, "tapped", Toast.LENGTH_SHORT).show()
+//                Timber.d("Tapped")
+//                //Toast.makeText(itemView.context, "tapped", Toast.LENGTH_SHORT).show()
 //            }
         }
     }

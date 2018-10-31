@@ -10,7 +10,7 @@
     tools:context=".ui.ConnectSharedFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/artist_view"
+        android:id="@+id/artist_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
