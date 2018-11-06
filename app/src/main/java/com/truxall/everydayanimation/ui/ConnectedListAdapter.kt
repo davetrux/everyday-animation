@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Artist
 import timber.log.Timber
 
-internal class ArtistListAdapter internal constructor(context: Context, clickListener: ArtistClickListener) : RecyclerView.Adapter<ArtistListAdapter.ArtistViewHolder>() {
+internal class ConnectedListAdapter internal constructor(context: Context, clickListener: ArtistClickListener) : RecyclerView.Adapter<ConnectedListAdapter.ArtistViewHolder>() {
 
     private val mInflater: LayoutInflater
     private var mArtists: List<Artist>? = null

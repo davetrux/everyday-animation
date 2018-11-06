@@ -12,7 +12,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
 
-internal class AlbumListAdapter internal constructor(context: Context) : RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>() {
+internal class ListAdapter internal constructor(context: Context) : RecyclerView.Adapter<ListAdapter.AlbumViewHolder>() {
 
     private val mInflater: LayoutInflater
     private var mAlbums: List<Album>? = null
@@ -22,7 +22,7 @@ internal class AlbumListAdapter internal constructor(context: Context) : Recycle
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
-        val itemView = mInflater.inflate(R.layout.album_list, parent, false)
+        val itemView = mInflater.inflate(R.layout.list_albums, parent, false)
         return AlbumViewHolder(itemView)
     }
 

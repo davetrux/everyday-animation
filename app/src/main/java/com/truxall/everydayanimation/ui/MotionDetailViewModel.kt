@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import com.truxall.everydayanimation.data.Artist
 import com.truxall.everydayanimation.data.ArtistRepository
 
-class ArtistDetailViewModel(application: Application) : AndroidViewModel(application) {
+class MotionDetailViewModel(application: Application) : AndroidViewModel(application) {
 
     private val mRepository: ArtistRepository
 

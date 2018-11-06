@@ -33,7 +33,7 @@ class ConnectStartFragment : Fragment(), ArtistClickListener {
         viewModel = ViewModelProviders.of(this).get(ConnectSharedViewModel::class.java)
 
         val recyclerView =  view.findViewById<RecyclerView>(R.id.artist_recycler_view)
-        val adapter = ArtistListAdapter(this.requireContext(), this)
+        val adapter = ConnectedListAdapter(this.requireContext(), this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
 

@@ -33,7 +33,7 @@ class ListFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
 
         val recyclerView =  view.findViewById<RecyclerView>(R.id.album_view)
-        val adapter = AlbumListAdapter(this.requireContext())
+        val adapter = ListAdapter(this.requireContext())
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this.context)
 

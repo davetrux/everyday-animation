@@ -13,18 +13,18 @@ import androidx.lifecycle.ViewModelProviders
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Artist
 
-class ArtistDetailFragment : Fragment() {
+class MotionDetailFragment : Fragment() {
 
-    private lateinit var viewModel: ArtistDetailViewModel
+    private lateinit var viewModel: MotionDetailViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.artist_detail, container, false)
+        return inflater.inflate(R.layout.motion_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ArtistDetailViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(MotionDetailViewModel::class.java)
 
         val artistObserver = Observer<Artist> { artist ->
             val nameView = view.findViewById<TextView>(R.id.artist_name)
@@ -40,6 +40,6 @@ class ArtistDetailFragment : Fragment() {
         viewModel.artist.observe(this, artistObserver)
     }
         companion object {
-        fun newInstance() = ArtistDetailFragment()
+        fun newInstance() = MotionDetailFragment()
     }
 }

@@ -24,9 +24,9 @@
 
     <fragment
         android:id="@+id/artist_detail_fragment"
-        android:name="com.truxall.everydayanimation.ui.ArtistDetailFragment"
+        android:name="com.truxall.everydayanimation.ui.MotionDetailFragment"
         android:label="Artist Detail"
-        tools:layout="@layout/artist_detail">
+        tools:layout="@layout/motion_detail">
 
     </fragment>
 
