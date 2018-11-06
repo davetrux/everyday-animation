@@ -47,21 +47,4 @@
         motion:layout_constraintTop_toBottomOf="@id/artist_name"
         tools:text="Genre"/>
 
-    <ImageView
-        android:id="@+id/artist_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        motion:layout_constraintStart_toStartOf="parent"
-        motion:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/artist_bio"
-        android:alpha="0"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        motion:layout_constraintTop_toBottomOf="@id/artist_name"
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorGray"
     android:layout_marginTop="?attr/actionBarSize"
-    tools:context=".ui.ConnectSharedFragment">
+    tools:context=".ui.ConnectStartFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/artist_recycler_view"

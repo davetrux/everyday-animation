@@ -18,9 +18,9 @@
 
     <fragment
         android:id="@+id/connected_fragment"
-        android:name="com.truxall.everydayanimation.ui.ConnectSharedFragment"
+        android:name="com.truxall.everydayanimation.ui.ConnectStartFragment"
         android:label="@string/list"
-        tools:layout="@layout/connected_fragment" />
+        tools:layout="@layout/connected_start_fragment" />
 
     <fragment
         android:id="@+id/artist_detail_fragment"
