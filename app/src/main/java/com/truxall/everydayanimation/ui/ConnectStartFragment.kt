@@ -21,11 +21,10 @@ import androidx.transition.*
 class ConnectStartFragment : Fragment(), ArtistClickListener {
 
     private lateinit var viewModel: ConnectSharedViewModel
-    val TAG = ConnectStartFragment::class.java.simpleName
+    private val TAG: String = ConnectStartFragment::class.java.simpleName
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.connected_start_fragment, container, false)
     }
 
@@ -45,19 +44,24 @@ class ConnectStartFragment : Fragment(), ArtistClickListener {
     }
 
     override fun onArtistItemClick(pos: Int, artist: Artist, sharedNameView: TextView, sharedGenreView: TextView) {
-        // Toast.makeText(this.context, "fragmenttapped", Toast.LENGTH_SHORT).show()
         val titleName = ViewCompat.getTransitionName(sharedNameView)
         val genreName = ViewCompat.getTransitionName(sharedGenreView)
         val detailFragment = ConnectedEndFragment.newInstance(artist, titleName!!, genreName!!)
 
-        detailFragment.sharedElementEnterTransition = ChangeBounds()
+        // The transition set is needed to apply both ChangeTransform and ChangeBounds.
+        //  ChangeTransform is needed because the animated views are nested in a recyclerview
+        val transitionSet = TransitionSet()
+        transitionSet.addTransition(ChangeTransform())
+        transitionSet.addTransition(ChangeBounds())
+        transitionSet.duration =500
+
+        detailFragment.sharedElementEnterTransition = transitionSet
         detailFragment.enterTransition = Fade()
         exitTransition = Fade()
-        detailFragment.sharedElementReturnTransition = ChangeBounds()
+        detailFragment.sharedElementReturnTransition = transitionSet
 
         fragmentManager!!
                 .beginTransaction()
-                .setReorderingAllowed(true)
                 .addSharedElement(sharedNameView, titleName)
                 .addSharedElement(sharedGenreView, genreName)
                 .addToBackStack(TAG)
