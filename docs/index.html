@@ -87,10 +87,11 @@
       </section>
       <section>
         <h3>Relationship</h3>
-        <aside class="notes">Relationship refers to the spatial, temporal, and hierarchal representations between
+        <aside class="notes">Relationship refers to the spatial, temporal, and hierarchical representations between
           interface objects that guide user understanding and decision making.</aside>
       </section>
     </section>
+    
     <section>
       <h2>Agenda</h2>
       <ul>
@@ -110,10 +111,49 @@
           of a View object.</aside>
       </section>
       <section>
+        <h3>View Animations</h3>
+        <pre><code class="xml hljs">
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:fillAfter="true" >
+  <alpha
+    android:duration="1000"
+    
+    android:fromAlpha="1.0"
+    
+    android:interpolator="@android:anim/accelerate_interpolator"
+    
+    android:toAlpha="0.0"></alpha>
+  
+</set></code></pre>
+        <pre><code class="kotlin hljs">
+val view = AnimationUtils.loadAnimation(context, R.anim.fade)
+view.startAnimation(fade)
+          </code></pre>
+      </section>
+      <section>
         <h3>Property Animations</h3>
         <aside class="notes">A property animation changes a property's (a field in an object) value over a specified
           length of time. To animate something, you specify the object property that you want to animate, such as an
           object's position on the screen, how long you want to animate it for, and what values you want to animate between.</aside>
+      </section>
+      <section>
+        <h3>Property Animations</h3>
+        <pre><code class="kotlin hljs">
+view.setOnClickListener { onStartAnimation() }
+......
+
+fun onStartAnimation() {
+  val animator = ValueAnimator.ofFloat(0f, -screenHeight)
+
+  animator.addUpdateListener {
+    val value = it.animatedValue as Float
+    rocket.translationY = value
+  }
+  
+  animator.interpolator = LinearInterpolator()
+  animator.duration = 1000
+  animator.start()
+}
+</code></pre>
       </section>
       <section>
         <h3>Layout Animations</h3>
@@ -133,16 +173,19 @@
       <section>
         <h2>Specific Use Cases</h2>
       </section>
+      
+      <section>
+        <h3>Some Caveats:</h3>
+        <p>No Libraries</p>
+        <p>Complexity == High</p>
+      </section>
+  
+      <section>
+        <h3>Call Attention to a Button</h3>
+      </section>
+      
       <section>
         <h3>Cascade Tiles In A List</h3>
-      </section>
-      
-      <section>
-        <h3>Connect Shared Elements</h3>
-      </section>
-      
-      <section>
-        <h3>Menu In Context</h3>
       </section>
       
       <section>
@@ -150,12 +193,13 @@
       </section>
       
       <section>
-        <h3>Call Attention to a Button</h3>
+        <h3>Menu In Context</h3>
       </section>
       
       <section>
-        <h3>Secondary Animation</h3>
+        <h3>Connect Shared Elements</h3>
       </section>
+      
     </section>
     <section>
       <h2>Accessibility</h2>
