@@ -16,9 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Artist
 import androidx.core.view.ViewCompat
-import androidx.transition.AutoTransition
-import androidx.transition.Fade
-import androidx.transition.Slide
+import androidx.transition.*
 
 
 class ConnectStartFragment : Fragment(), ArtistClickListener {
@@ -53,15 +51,16 @@ class ConnectStartFragment : Fragment(), ArtistClickListener {
         val genreName = ViewCompat.getTransitionName(sharedGenreView)!!
         val detailFragment = ConnectedEndFragment.newInstance(artist, titleName!!, genreName)
 
-        detailFragment.sharedElementEnterTransition = AutoTransition()
-        detailFragment.enterTransition = AutoTransition()
-        exitTransition = AutoTransition()
-        detailFragment.sharedElementReturnTransition = AutoTransition()
+        detailFragment.sharedElementEnterTransition = ChangeBounds()
+        detailFragment.enterTransition = Fade()
+        exitTransition = Fade()
+        detailFragment.sharedElementReturnTransition = ChangeBounds()
 
         fragmentManager!!
                 .beginTransaction()
+                .setReorderingAllowed(true)
                 .addSharedElement(shareTitleViewView, titleName)
-                .addSharedElement(sharedGenreView, genreName)
+                //.addSharedElement(sharedGenreView, genreName)
                 .addToBackStack(TAG)
                 .replace(R.id.nav_host, detailFragment)
                 .commit()

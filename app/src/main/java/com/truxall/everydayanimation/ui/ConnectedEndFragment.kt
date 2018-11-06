@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
+import androidx.transition.ChangeBounds
 import androidx.transition.TransitionInflater
 import com.truxall.everydayanimation.R
 import com.truxall.everydayanimation.data.Artist
@@ -18,7 +20,7 @@ class ConnectedEndFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         postponeEnterTransition()
-        sharedElementEnterTransition = TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        sharedElementEnterTransition = ChangeBounds()
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,6 +30,8 @@ class ConnectedEndFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        postponeEnterTransition()
 
         val artist = arguments!!.getParcelable<Artist>(ARTIST_ITEM)
         val nameTransition = arguments!!.getString(NAME_TRANS)
@@ -48,6 +52,12 @@ class ConnectedEndFragment : Fragment() {
         val imageView = view.findViewById<ImageView>(R.id.artist_image)
         val bitmap =  BitmapFactory.decodeByteArray(artist.image, 0, artist.image.size)
         imageView.setImageBitmap(bitmap)
+
+        // Data is loaded so lets wait for our parent to be drawn
+        (view.parent as? ViewGroup)?.doOnPreDraw {
+            // Parent has been drawn. Start transitioning!
+            startPostponedEnterTransition()
+        }
     }
 
     companion object {
