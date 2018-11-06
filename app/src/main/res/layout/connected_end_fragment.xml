@@ -23,7 +23,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:textAlignment="center"
-        android:transitionName="@string/title_transition"
+        android:transitionName="@string/title_transition_end"
         android:layout_below="@id/artist_image"
         tools:text="placeholder text" />
 

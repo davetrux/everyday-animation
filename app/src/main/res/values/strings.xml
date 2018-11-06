@@ -19,6 +19,7 @@
     <string name="morph_button">Go! Go! Go!</string>
     <string name="genre_transition">genre</string>
     <string name="title_transition">name</string>
+    <string name="title_transition_end">endname</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

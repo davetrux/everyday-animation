@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -45,11 +44,11 @@ class ConnectStartFragment : Fragment(), ArtistClickListener {
         viewModel.artistList.observe(this, albumObserver)
     }
 
-    override fun onArtistItemClick(pos: Int, artist: Artist, shareTitleViewView: TextView, sharedGenreView: TextView) {
+    override fun onArtistItemClick(pos: Int, artist: Artist, sharedNameView: TextView, sharedGenreView: TextView) {
         // Toast.makeText(this.context, "fragmenttapped", Toast.LENGTH_SHORT).show()
-        val titleName = ViewCompat.getTransitionName(shareTitleViewView)
-        val genreName = ViewCompat.getTransitionName(sharedGenreView)!!
-        val detailFragment = ConnectedEndFragment.newInstance(artist, titleName!!, genreName)
+        val titleName = ViewCompat.getTransitionName(sharedNameView)
+        val genreName = ViewCompat.getTransitionName(sharedGenreView)
+        val detailFragment = ConnectedEndFragment.newInstance(artist, titleName!!, genreName!!)
 
         detailFragment.sharedElementEnterTransition = ChangeBounds()
         detailFragment.enterTransition = Fade()
@@ -59,8 +58,8 @@ class ConnectStartFragment : Fragment(), ArtistClickListener {
         fragmentManager!!
                 .beginTransaction()
                 .setReorderingAllowed(true)
-                .addSharedElement(shareTitleViewView, titleName)
-                //.addSharedElement(sharedGenreView, genreName)
+                .addSharedElement(sharedNameView, titleName)
+                .addSharedElement(sharedGenreView, genreName)
                 .addToBackStack(TAG)
                 .replace(R.id.nav_host, detailFragment)
                 .commit()

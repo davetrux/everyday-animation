@@ -34,8 +34,9 @@ internal class ArtistListAdapter internal constructor(context: Context, clickLis
         if (mArtists != null) {
             val current = mArtists!![position]
             holder.artistNameView.text = current.name
+            holder.artistNameView.transitionName = holder.artistNameView.transitionName + position
             holder.artistGenre.text = current.genre
-            //holder.artistBio.text = current.biography
+            holder.artistGenre.transitionName = holder.artistGenre.transitionName + position
             val thumb =  BitmapFactory.decodeByteArray(current.thumbNail, 0, current.thumbNail.size)
             holder.artistThumbnail.setImageBitmap(thumb)
             holder.artistThumbnail.setOnClickListener {
@@ -67,14 +68,8 @@ internal class ArtistListAdapter internal constructor(context: Context, clickLis
 
         init {
             artistNameView = itemView.findViewById(R.id.artist_name)
-            val name = artistNameView.transitionName
             artistGenre = itemView.findViewById(R.id.artist_genre)
             artistThumbnail = itemView.findViewById(R.id.artist_thumb)
-//            // artistBio = itemView.findViewById(R.id.artist_bio)
-//            itemView.setOnClickListener {
-//                Timber.d("Tapped")
-//                //Toast.makeText(itemView.context, "tapped", Toast.LENGTH_SHORT).show()
-//            }
         }
     }
 }
