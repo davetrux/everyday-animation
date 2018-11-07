@@ -5,18 +5,18 @@
     android:id="@+id/attention_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGray"
     android:layout_marginTop="?attr/actionBarSize"
+    android:background="@color/colorGray"
     tools:context=".ui.ButtonAttentionFragment">
 
     <TextView
         android:id="@+id/attention"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
         android:text="@string/attention"
+        app:layout_constraintBottom_toTopOf="@+id/attention_fab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,16 +26,16 @@
         android:id="@+id/attention_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:clickable="true"
-        app:rippleColor="@color/colorAccent"
         android:focusable="true"
-        android:rotation = "0"
+        android:rotation="0"
         android:tint="@android:color/white"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="@id/attention_fragment"
         app:layout_constraintRight_toRightOf="@id/attention_fragment"
-        app:srcCompat="@drawable/ic_add"/>
+        app:rippleColor="@color/colorAccent"
+        app:srcCompat="@drawable/ic_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
