@@ -8,7 +8,7 @@ Data for this project was gleaned from [The AudioDB](https://www.theaudiodb.com/
 ### General
 [Good to great UI animation tips](https://uxdesign.cc/good-to-great-ui-animation-tips-7850805c12e5)
 
-[Material Design Specifications for Motion](https://material.io/design/motion/understanding-motion.html)
+[Material Design Specifications for Motion](https://material.io/design/motion/understanding-motion.html)
 
 [Creating Usability with Motion: The UX in Motion Manifesto](https://medium.com/ux-in-motion/creating-usability-with-motion-the-ux-in-motion-manifesto-a87a4584ddc)
 
