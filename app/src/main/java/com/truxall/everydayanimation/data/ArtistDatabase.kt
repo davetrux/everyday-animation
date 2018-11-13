@@ -7,7 +7,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.truxall.everydayanimation.Utils
 
-@Database(entities = [(Artist::class), (Album::class)], version = 1)
+@Database(entities = [Artist::class, Album::class], version = 1)
 abstract class ArtistDatabase : RoomDatabase() {
     abstract fun artistDao(): ArtistDao
 
