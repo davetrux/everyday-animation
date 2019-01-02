@@ -26,7 +26,7 @@
             motion:layout_constraintRight_toRightOf="@id/floating_fragment"
             motion:srcCompat="@drawable/ic_add"/>
         <Constraint
-            android:id="@id/createLayout"
+            android:id="@id/createFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -34,10 +34,10 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:visibility="invisible"
-            motion:layout_constraintBottom_toTopOf="@+id/mainFab"
+            motion:layout_constraintTop_toTopOf="@+id/mainFab"
             motion:layout_constraintRight_toRightOf="@+id/floating_fragment"/>
         <Constraint
-            android:id="@id/shareLayout"
+            android:id="@id/shareFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -45,8 +45,8 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:visibility="invisible"
-            motion:layout_constraintBottom_toTopOf="@id/createLayout"
-            motion:layout_constraintLeft_toLeftOf="@id/createLayout"
+            motion:layout_constraintBottom_toBottomOf="@id/createFab"
+            motion:layout_constraintLeft_toLeftOf="@id/createFab"
             motion:layout_constraintRight_toRightOf="@id/floating_fragment"/>
     </ConstraintSet>
 
@@ -66,10 +66,10 @@
             motion:layout_constraintRight_toRightOf="@id/floating_fragment"
             motion:srcCompat="@drawable/ic_add"/>
         <Constraint
-            android:id="@id/createLayout"
+            android:id="@id/createFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="24dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -77,7 +77,7 @@
             motion:layout_constraintBottom_toTopOf="@+id/mainFab"
             motion:layout_constraintRight_toRightOf="@+id/floating_fragment"/>
         <Constraint
-            android:id="@id/shareLayout"
+            android:id="@id/shareFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
@@ -85,8 +85,8 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:visibility="visible"
-            motion:layout_constraintBottom_toTopOf="@id/createLayout"
-            motion:layout_constraintLeft_toLeftOf="@id/createLayout"
+            motion:layout_constraintBottom_toTopOf="@id/createFab"
+            motion:layout_constraintLeft_toLeftOf="@id/createFab"
             motion:layout_constraintRight_toRightOf="@id/floating_fragment"/>
     </ConstraintSet>
 </MotionScene>

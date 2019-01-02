@@ -28,64 +28,26 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_add" />
 
-    <LinearLayout
-        android:id="@+id/shareLayout"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shareFab"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="@android:color/white"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_share" />
 
-        <TextView
-            android:id="@+id/shareLabelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/button_label"
-            android:elevation="2dp"
-            android:fontFamily="sans-serif"
-            android:padding="5dip"
-            android:text="Share"
-            android:textColor="@android:color/white"
-            android:typeface="normal" />
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/shareFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@android:color/white"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_share" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/createLayout"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/createFab"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="@android:color/white"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_create" />
 
-        <TextView
-            android:id="@+id/createLabelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/button_label"
-            android:elevation="2dp"
-            android:fontFamily="sans-serif"
-            android:padding="5dip"
-            android:text="Create"
-            android:textColor="@android:color/white"
-            android:typeface="normal" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/createFab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:tint="@android:color/white"
-            app:fabSize="mini"
-            app:srcCompat="@drawable/ic_create" />
-
-    </LinearLayout>
 </androidx.constraintlayout.motion.widget.MotionLayout>

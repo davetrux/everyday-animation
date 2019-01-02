@@ -24,8 +24,8 @@ class FloatingMenuFragment : Fragment() {
     private lateinit var fab: FloatingActionButton
     private lateinit var createButton: FloatingActionButton
     private lateinit var shareButton: FloatingActionButton
-    private lateinit var shareLayout: LinearLayout
-    private lateinit var addLayout: LinearLayout
+//    private lateinit var shareLayout: LinearLayout
+//    private lateinit var addLayout: LinearLayout
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -40,8 +40,8 @@ class FloatingMenuFragment : Fragment() {
         this.shareButton = view.findViewById(R.id.shareFab)
         this.createButton = view.findViewById(R.id.createFab)
 
-        this.shareLayout = view.findViewById(R.id.shareLayout)
-        this.addLayout = view.findViewById(R.id.createLayout)
+//        this.shareLayout = view.findViewById(R.id.shareLayout)
+//        this.addLayout = view.findViewById(R.id.createLayout)
 
         this.fab.setOnClickListener {
             val motionView = view as MotionLayout
@@ -65,13 +65,13 @@ class FloatingMenuFragment : Fragment() {
     private fun menuClicked(view: View) {
         Toast.makeText(view.context, "Tapped", Toast.LENGTH_SHORT).show()
     }
-    private fun openMenu() {
-        this.shareLayout.visibility = View.VISIBLE
-        this.addLayout.visibility = View.VISIBLE
-    }
-
-    private fun closeMenu() {
-        this.shareLayout.visibility = View.INVISIBLE
-        this.addLayout.visibility = View.INVISIBLE
-    }
+//    private fun openMenu() {
+//        this.shareLayout.visibility = View.VISIBLE
+//        this.addLayout.visibility = View.VISIBLE
+//    }
+//
+//    private fun closeMenu() {
+//        this.shareLayout.visibility = View.INVISIBLE
+//        this.addLayout.visibility = View.INVISIBLE
+//    }
 }
