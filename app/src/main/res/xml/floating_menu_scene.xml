@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene
+<LayoutDescription
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
@@ -89,4 +89,4 @@
             motion:layout_constraintLeft_toLeftOf="@id/createFab"
             motion:layout_constraintRight_toRightOf="@id/floating_fragment"/>
     </ConstraintSet>
-</MotionScene>
+</LayoutDescription>

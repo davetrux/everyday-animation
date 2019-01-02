@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene
+<LayoutDescription
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
@@ -86,4 +86,4 @@
             android:layout_marginTop="10dp"
             motion:layout_constraintTop_toBottomOf="@id/artist_image"/>
     </ConstraintSet>
-</MotionScene>
+</LayoutDescription>
