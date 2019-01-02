@@ -38,7 +38,7 @@
         android:transitionName="@string/genre_transition"
         tools:text="Genre" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/artist_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,6 +53,6 @@
             android:paddingRight="15dp"
             android:textAlignment="viewStart"
             tools:text="Spicy jalapeno bacon ipsum dolor amet tail aute swine drumstick nulla ham hock velit id proident laboris. Shank aliquip short ribs buffalo in in. Dolor in tri-tip sint flank exercitation do. Duis qui meatloaf anim enim." />
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
