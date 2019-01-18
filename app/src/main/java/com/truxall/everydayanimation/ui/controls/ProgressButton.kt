@@ -113,6 +113,7 @@ class ProgressButton : AppCompatButton {
 
         val toWidth = 175
 
+        // Redraw the original button so it becomes a circle
         val cornerAnimation = ObjectAnimator.ofFloat(mGradientDrawable,
                 "cornerRadius",
                 this.initialCornerRadius,
