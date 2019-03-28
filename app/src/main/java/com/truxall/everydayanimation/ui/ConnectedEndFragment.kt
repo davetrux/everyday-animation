@@ -23,6 +23,7 @@ class ConnectedEndFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Get the data passed in from the new instance created by the caller
         val artist = arguments!!.getParcelable<Artist>(ARTIST_ITEM)
         val nameTransition = arguments!!.getString(NAME_TRANS)
         val genreTransition = arguments!!.getString(GENRE_TRANS)

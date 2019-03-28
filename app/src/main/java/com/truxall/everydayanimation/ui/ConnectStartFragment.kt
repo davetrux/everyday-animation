@@ -1,6 +1,5 @@
 package com.truxall.everydayanimation.ui
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -44,16 +43,20 @@ class ConnectStartFragment : Fragment(), ArtistClickListener {
     }
 
     override fun onArtistItemClick(pos: Int, artist: Artist, sharedNameView: TextView, sharedGenreView: TextView) {
-        val titleName = ViewCompat.getTransitionName(sharedNameView)
-        val genreName = ViewCompat.getTransitionName(sharedGenreView)
-        val detailFragment = ConnectedEndFragment.newInstance(artist, titleName!!, genreName!!)
-
         // The transition set is needed to apply both ChangeTransform and ChangeBounds.
         //  ChangeTransform is needed because the animated views are nested in a recyclerview
         val transitionSet = TransitionSet()
         transitionSet.addTransition(ChangeTransform())
         transitionSet.addTransition(ChangeBounds())
-        transitionSet.duration =500
+        transitionSet.duration = 500
+
+        // We could add a Path to the transition set to control how the items move
+
+        // Get the transition names from the view XML
+        val titleName = ViewCompat.getTransitionName(sharedNameView)
+        val genreName = ViewCompat.getTransitionName(sharedGenreView)
+        // Pass them to the new fragment so it knows which items to animate
+        val detailFragment = ConnectedEndFragment.newInstance(artist, titleName!!, genreName!!)
 
         detailFragment.sharedElementEnterTransition = transitionSet
         detailFragment.enterTransition = Fade()
